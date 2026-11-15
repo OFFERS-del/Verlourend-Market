@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verlouren Market — Скупка цифровых активов</title>
+<meta name="description" content="Verlouren Market — скупка NFT-подарков, Telegram Stars, CS2 скинов и игровых аккаунтов.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ background:#101112;
+ color:#eee;
+ font-family:Arial,Helvetica,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+header{
+ height:75px;
+ border-bottom:1px solid #292a2c;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 7%;
+ background:#141516;
+ position:sticky;
+ top:0;
+ z-index:10;
+}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px;letter-spacing:1px}
+.logo-icon{
+ width:39px;height:39px;
+ display:grid;place-items:center;
+ border:1px solid #777;
+ transform:rotate(45deg);
+ color:#fff;font-size:21px;
+}
+.logo-icon span{transform:rotate(-45deg)}
+nav{display:flex;gap:27px;color:#999;font-size:13px}
+nav a:hover{color:white}
+.contact{color:#ddd;font-size:13px;border:1px solid #414244;padding:11px 17px;border-radius:8px}
+.container{width:86%;max-width:1150px;margin:auto}
+.hero{text-align:center;padding:105px 15px 85px}
+.tag{
+ display:inline-block;border:1px solid #393a3c;
+ color:#aaa;padding:8px 15px;border-radius:30px;
+ font-size:11px;letter-spacing:2px;margin-bottom:27px;
+}
+.hero h1{font-size:clamp(38px,7vw,72px);letter-spacing:-3px;line-height:1.1}
+.hero h1 span{color:#85878a}
+.hero p{color:#929497;max-width:550px;margin:22px auto;line-height:1.8;font-size:15px}
+.btn{
+ display:inline-block;background:#e4e4e4;color:#111;
+ padding:15px 25px;border-radius:8px;
+ font-weight:700;font-size:13px;margin-top:17px;
+ transition:.2s;
+}
+.btn:hover{background:#fff;transform:translateY(-2px)}
+.section{padding:65px 0}
+.section-title{text-align:center;font-size:29px;margin-bottom:12px}
+.section-sub{text-align:center;color:#777;font-size:13px;margin-bottom:38px}
+.stats{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:14px;
+}
+.stat{
+ background:#18191a;border:1px solid #303133;
+ border-radius:12px;padding:25px 17px;text-align:center;
+}
+.stat .symbol{font-size:23px;margin-bottom:15px}
+.stat h3{font-size:15px;margin-bottom:9px}
+.stat p{font-size:12px;color:#85878a;line-height:1.6}
+.purchase{
+ background:#191b1c;border:1px solid #383a3b;
+ border-radius:17px;padding:32px;
+ max-width:650px;margin:0 auto;
+}
+.purchase h3{text-align:center;font-size:22px;margin-bottom:10px}
+.purchase>p{text-align:center;color:#85878a;font-size:13px;margin-bottom:25px}
+.input-label{font-size:12px;color:#aaa;display:block;margin-bottom:9px}
+input{
+ width:100%;background:#101112;color:white;
+ border:1px solid #414345;border-radius:8px;
+ padding:16px;font-size:14px;outline:none;
+}
+input:focus{border-color:#999}
+.offer{
+ background:#15271d;border:1px solid #28543a;
+ color:#65db91;padding:12px;
+ border-radius:8px;margin-top:14px;
+ font-size:13px;text-align:center;
+}
+.offer strong{font-size:16px}
+.send{
+ width:100%;border:0;background:#e5e5e5;
+ padding:16px;border-radius:8px;margin-top:17px;
+ font-weight:bold;font-size:14px;cursor:pointer;
+}
+.send:hover{background:#fff}
+.hint{text-align:center;color:#707276;font-size:11px;margin-top:13px}
+.table-wrap{overflow-x:auto;border:1px solid #303133;border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th,td{text-align:left;padding:19px 22px;border-bottom:1px solid #303133;font-size:13px}
+th{background:#1a1b1d;color:#999;font-weight:500}
+td{color:#ddd}
+tr:last-child td{border-bottom:0}
+.status{color:#72d49a;background:#193024;padding:6px 10px;border-radius:20px;font-size:11px}
+.reputation{
+ border:1px solid #333536;background:#191a1b;
+ border-radius:15px;padding:35px;text-align:center;
+ max-width:450px;margin:auto;
+}
+.rating{font-size:49px;font-weight:bold}
+.stars{color:#e5c16b;letter-spacing:5px;font-size:22px;margin:9px}
+.rating-text{color:#85878a;font-size:12px}
+.reviews{max-width:750px;margin:40px auto 0}
+.review{
+ background:#191a1b;border:1px solid #303133;
+ border-radius:11px;padding:21px;margin-bottom:12px;
+}
+.review-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.review-top strong{font-size:14px}
+.review-date{font-size:11px;color:#777}
+.review-stars{color:#e5c16b;font-size:14px;margin:12px 0}
+.review p{font-size:13px;color:#aaa;line-height:1.6}
+.feedback{text-align:center;padding:75px 15px}
+.feedback h2{font-size:29px;margin-bottom:13px}
+.feedback p{font-size:13px;color:#888;line-height:1.7}
+footer{
+ border-top:1px solid #292a2c;padding:28px 7%;
+ display:flex;justify-content:space-between;align-items:center;
+ color:#777;font-size:12px;gap:15px;flex-wrap:wrap;
+}
+footer a{color:#ddd}
+@media(max-width:700px){
+ header{padding:0 5%;height:65px}
+ nav{display:none}
+ .container{width:91%}
+ .hero{padding:75px 10px 65px}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .purchase{padding:23px 17px}
+ .section{padding:48px 0}
+ .section-title{font-size:25px}
+ footer{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <a class="logo" href="#">
+  <div class="logo-icon"><span>V</span></div>
+  VERLOUREN
+ </a>
+ <nav>
+  <a href="#about">О нас</a>
+  <a href="#buy">Скупка</a>
+  <a href="#reviews">Отзывы</a>
+ </nav>
+ <a class="contact" href="https://t.me/verlourend" target="_blank">@verlourend</a>
+</header>
+
+<section class="hero">
+ <div class="tag">VERLOUREN MARKET · OFFICIAL</div>
+ <h1>VERLOUREN<br><span>MARKET</span></h1>
+ <p>Скупка NFT-подарков и цифровых активов по приятным ценам. Быстро, удобно и безопасно.</p>
+ <a class="btn" href="#buy">Продать актив ↗</a>
+</section>
+
+<section class="section" id="about">
+ <div class="container">
+  <h2 class="section-title">Почему выбирают нас?</h2>
+  <p class="section-sub">Наша главная ценность — доверие клиентов</p>
+  <div class="stats">
+   <div class="stat">
+    <div class="symbol">◷</div>
+    <h3>24/7 на связи</h3>
+    <p>Всегда готовы ответить на ваши вопросы и помочь со сделкой.</p>
+   </div>
+   <div class="stat">
+    <div class="symbol">★</div>
+    <h3>Отличная оценка</h3>
+    <p>Средняя оценка нашего сервиса — 4.8 из 5.</p>
+   </div>
+   <div class="stat">
+    <div class="symbol">◇</div>
+    <h3>Безопасность</h3>
+    <p>Внимательно относимся к каждой сделке и её условиям.</p>
+   </div>
+   <div class="stat">
+    <div class="symbol">↗</div>
+    <h3>Быстрые сделки</h3>
+    <p>Стараемся проводить сделки максимально оперативно.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="buy">
+ <div class="container">
+  <h2 class="section-title">Продать свой актив</h2>
+  <p class="section-sub">Отправьте ссылку на NFT-подарок для оценки</p>
+
+  <div class="purchase">
+   <h3>Verlouren Exchange</h3>
+   <p>Вставьте ссылку на ваш Telegram NFT-подарок</p>
+
+   <label class="input-label" for="nft">Ссылка на NFT-подарок</label>
+   <input id="nft" type="url" placeholder="https://t.me/nft/...">
+
+   <div class="offer">
+    <strong>🟢 Отличная цена −4%</strong><br>
+    <span style="font-size:11px">Выгодные условия оценки вашего подарка</span>
+   </div>
+
+   <button class="send" onclick="sendNFT()">Отправить ↗</button>
+   <div class="hint">После нажатия вы перейдёте в личные сообщения Telegram</div>
+  </div>
+
+  <div style="margin-top:65px">
+   <h2 class="section-title">Что мы скупаем?</h2>
+   <p class="section-sub">Основные направления Verlouren Market</p>
+   <div class="table-wrap">
+    <table>
+     <thead>
+      <tr><th>№</th><th>Категория</th><th>Статус</th><th>Условия</th></tr>
+     </thead>
+     <tbody>
+      <tr><td>01</td><td>🎮 Скины CS2</td><td><span class="status">Принимаем</span></td><td>По оценке</td></tr>
+      <tr><td>02</td><td>⭐ Telegram Stars</td><td><span class="status">Принимаем</span></td><td>По оценке</td></tr>
+      <tr><td>03</td><td>🎁 NFT-подарки</td><td><span class="status">Принимаем</span></td><td>Выгодные цены</td></tr>
+      <tr><td>04</td><td>🎯 Игровые аккаунты</td><td><span class="status">Принимаем</span></td><td>По оценке</td></tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="reviews">
+ <div class="container">
+  <h2 class="section-title">Отзывы клиентов</h2>
+  <p class="section-sub">Мнение наших покупателей и продавцов</p>
+
+  <div class="reputation">
+   <div class="rating">4.8</div>
+   <div class="stars">★★★★★</div>
+   <div class="rating-text">На основе 238 отзывов</div>
+  </div>
+
+  <div class="reviews">
+   <div class="review">
+    <div class="review-top">
+     <strong>Сделка #238</strong>
+     <span class="review-date">3 дня назад</span>
+    </div>
+    <div class="review-stars">★★★★★</div>
+    <p>Вродь норм лаве закинули</p>
+   </div>
+
+   <div class="review">
+    <div class="review-top">
+     <strong>Сделка #237</strong>
+     <span class="review-date">3 дня назад</span>
+    </div>
+    <div class="review-stars">★★★★☆</div>
+    <p>Чуть долго а так нормально</p>
+   </div>
+
+   <div class="review">
+    <div class="review-top">
+     <strong>Сделка #236</strong>
+     <span class="review-date">4 дня назад</span>
+    </div>
+    <div class="review-stars">★★★★★</div>
+    <p style="color:#777">Комментарий отсутствует</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="feedback">
+ <h2>Оставьте мнение о нас</h2>
+ <p>Для нас это важно.<br>Каждый отзыв помогает нам становиться лучше.</p>
+ <a class="btn" href="https://t.me/verlourend" target="_blank">Оставить отзыв ↗</a>
+</section>
+
+<footer>
+ <div>© 2026 VERLOUREN MARKET</div>
+ <div>Все права защищены</div>
+ <a href="https://t.me/verlourend" target="_blank">@verlourend</a>
+</footer>
+
+<script>
+function sendNFT(){
+ const input=document.getElementById('nft');
+ const link=input.value.trim();
+
+ if(!link){
+  alert('Сначала вставьте ссылку на NFT-подарок!');
+  input.focus();
+  return;
+ }
+
+ try{
+  const parsed=new URL(link);
+  if(!['http:','https:'].includes(parsed.protocol)){
+   throw new Error('Invalid URL');
+  }
+ }catch(e){
+  alert('Введите корректную ссылку на NFT!');
+  return;
+ }
+
+ const message='Здравствуйте,хотел бы продать свой подарок\n'+link;
+ window.open(
+  'https://t.me/verlourend?text='+encodeURIComponent(message),
+  '_blank'
+ );
+}
+</script>
+
+</body>
+</html>
